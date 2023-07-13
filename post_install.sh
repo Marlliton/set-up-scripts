@@ -47,7 +47,7 @@ baixar_e_instalar_programas_wget() {
     # Extrair o nome do arquivo .deb da URL
     arquivo=$(basename "$url")
     
-    # Baixar o arquivo .deb para o diretório de destino
+     Baixar o arquivo .deb para o diretório de destino
     wget -P "$DEST_DIR" "$url"
     retorno_download=$?
 
@@ -68,7 +68,7 @@ baixar_e_instalar_programas_wget() {
 }
 
 # Chamar a função para baixar e instalar os programas
-# baixar_e_instalar_programas_wget
+ baixar_e_instalar_programas_wget
 
 baixar_e_instalar_programas_flatpak() {
   for programa in "${PROGRAMAS_FLATPAK[@]}"
@@ -84,7 +84,7 @@ baixar_e_instalar_programas_flatpak() {
 }
 
 # Chamar a função para instalar os programas flatpak
-# baixar_e_instalar_programas_flatpak
+ baixar_e_instalar_programas_flatpak
 
 baixar_e_instalar_programas_apt() {
   for programa in "${PROGRAMAS_APT[@]}";
@@ -102,7 +102,7 @@ baixar_e_instalar_programas_apt() {
   . "$caminho_u_launcher_instalacao"
 }
 
-# baixar_e_instalar_programas_apt
+ baixar_e_instalar_programas_apt
 
 executar_configuracao_node_js() {
   echo "${GREEN}Executando o script de configuração do Node.js...${RESET}"
