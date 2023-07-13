@@ -49,9 +49,21 @@ baixar_e_instalar_programas_wget() {
     
     # Baixar o arquivo .deb para o diretório de destino
     wget -P "$DEST_DIR" "$url"
-    
+    retorno_download=$?
+
+    if [ $retorno_download -ne 0 ]; then
+      echo "${RED} Erro durante o download do $arquivo ${RESET}"
+      continue
+    fi
+
     # Instalar o programa usando o dpkg
     sudo dpkg -i "$DEST_DIR/$arquivo"
+    retorno_intalacao=$?
+
+    if [ $retorno_intalacao -ne 0 ]; then
+      echo "${RED} Erro na instalação do programa $arquivo ${YELLOW} [RODANOD INSTALL -F] ${RESET}"
+      sudo apt install -f
+    fi
   done
 }
 

@@ -37,7 +37,7 @@ instalar_fnm_node_mananer() {
   fish -c "curl -fsSL https://fnm.vercel.app/install | bash"
 
   echo "${YELLOW}Setando variável de ambiente para FNM...${RESET}"
-  fish -c "set -x PATH '/home/marlliton/.local/share/fnm' '$PATH'"
+  fish -c "set PATH '/home/marlliton/.local/share/fnm' '$PATH'"
   fish -c "fnm env | source"
 
   instalar_node_js
