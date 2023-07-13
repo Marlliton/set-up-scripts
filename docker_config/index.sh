@@ -31,7 +31,7 @@ instalar_docker() {
   echo "${GREEN}[DOCKER INSTALADO COM SUCESSO]${RESET}"
 }
 
-# instalar_docker
+instalar_docker
 
 configurar_grupo_docker() {
 
