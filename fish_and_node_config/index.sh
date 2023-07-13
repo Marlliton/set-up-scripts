@@ -27,7 +27,7 @@ instalar_fish_shell
 instalar_node_js() {
   echo
   echo "${YELLOW}Instalando a versão lts do node${RESET}"
-  fish -c "fnm install v16.20.1"
+  fish -c "fnm install --lts"
 }
 
 instalar_fnm_node_mananer() {
