@@ -35,11 +35,6 @@ executar_autenticacao_ssh_github() {
   . "$caminho_script"
 }
 
-instalar_node_js() {
-  echo "${GREEN}Executando o script de instalação do node...${RESET}"
-  caminho_script="$PWD/github_config/index.sh"
-  . "$caminho_script"
-}
 
 # Menu iterativo 
 declare -a selected_options
@@ -56,15 +51,14 @@ while true; do
   echo "$([[ "${selected_options[*]}" == *"0"* ]] && echo "${GREEN}*${RESET}") 0. Passo 0 atualizar o sistema e instalar principais programas"
   echo "$([[ "${selected_options[*]}" == *"1"* ]] && echo "${GREEN}*${RESET}") 1. Instalar e configurar o fish shell"
   echo "$([[ "${selected_options[*]}" == *"2"* ]] && echo "${GREEN}*${RESET}") 2. Instalar o oh-my-fish para customizações"
-  echo "$([[ "${selected_options[*]}" == *"3"* ]] && echo "${GREEN}*${RESET}") 3. Instalar o node.js"
-  echo "$([[ "${selected_options[*]}" == *"4"* ]] && echo "${GREEN}*${RESET}") 4. Instalar e configurar o docker"
-  echo "$([[ "${selected_options[*]}" == *"5"* ]] && echo "${GREEN}*${RESET}") 5. Configurar Autenticação SSH com o github"
-  echo "$([[ "${selected_options[*]}" == *"6"* ]] && echo "${GREEN}*${RESET}") 6. Reiniciar a máquina"
-  echo "$([[ "${selected_options[*]}" == *"7"* ]] && echo "${GREEN}*${RESET}") 7. Fechar terminal"
+  echo "$([[ "${selected_options[*]}" == *"3"* ]] && echo "${GREEN}*${RESET}") 3. Instalar e configurar o docker"
+  echo "$([[ "${selected_options[*]}" == *"4"* ]] && echo "${GREEN}*${RESET}") 4. Configurar Autenticação SSH com o github"
+  echo "$([[ "${selected_options[*]}" == *"5"* ]] && echo "${GREEN}*${RESET}") 5. Reiniciar a máquina"
+  echo "$([[ "${selected_options[*]}" == *"6"* ]] && echo "${GREEN}*${RESET}") 6. Fechar terminal"
 
   read opcao
 
-  if [[ $opcao =~ ^[0-7]$ ]]; then
+  if [[ $opcao =~ ^[0-6]$ ]]; then
     if [[ ! " ${selected_options[*]} " =~ " $opcao " ]]; then
       selected_options+=("$opcao")
     fi
@@ -80,20 +74,17 @@ while true; do
     2)
       executar_config_oh_my_fish 
       ;;
-    3)
-      instalar_node_js 
-      ;;
-    4) 
+    3) 
       executar_configuracao_docker
       ;;
-    5)
+    4)
       executar_autenticacao_ssh_github 
       ;;
-    6) 
+    5) 
       echo "[REINICIANDO...]"
       sudo reboot
       ;;
-    7) 
+    6) 
       echo "Saindo..."
       break
       ;;
