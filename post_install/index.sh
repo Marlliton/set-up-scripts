@@ -40,6 +40,12 @@ PROGRAMAS_APT=(
   "flameshot"
 )
 
+atualizar_sistema() {
+  sudo apt update && sudo apt full-upgrade -y
+}
+
+atualizar_sistema
+
 # Função para baixar e instalar os programas
 baixar_e_instalar_programas_wget() {
   for url in "${PROGRAMAS_DEB[@]}"
@@ -68,9 +74,13 @@ baixar_e_instalar_programas_wget() {
 }
 
 # Chamar a função para baixar e instalar os programas
- baixar_e_instalar_programas_wget
+# baixar_e_instalar_programas_wget
 
 baixar_e_instalar_programas_flatpak() {
+  if ! command -v flatpak >/dev/null 2>&1; then
+   sudo apt install flatpak
+  fi
+
   for programa in "${PROGRAMAS_FLATPAK[@]}"
   do
     if ! flatpak list | grep -q "$programa"; then
@@ -96,65 +106,13 @@ baixar_e_instalar_programas_apt() {
       echo "[PROGRAMA < $programa > JÁ EXISTE]"
     fi
   done
+
+  if ! command -v ulauncher >/dev/null 2>&1; then
+    echo "${YELLOW}INSTALANDO U_LAUNCHER${RESET}"
+    caminho_u_launcher_instalacao="$PWD/u_launcher/index.sh"
+    . "$caminho_u_launcher_instalacao"
+  fi
   
-  echo "${YELLOW}INSTALANDO U_LAUNCHER${RESET}"
-  caminho_u_launcher_instalacao="$PWD/u_launcher/index.sh"
-  . "$caminho_u_launcher_instalacao"
 }
 
- baixar_e_instalar_programas_apt
-
-executar_configuracao_node_js() {
-  echo "${GREEN}Executando o script de configuração do Node.js...${RESET}"
-  caminho_script="$PWD/fish_and_node_config/index.sh"
-  . "$caminho_script"
-}
-
-executar_configuracao_docker() {
-  echo "${GREEN}Executando o script de configuração do doker...${RESET}"
-  caminho_script="$PWD/docker_config/index.sh"
-  . "$caminho_script"
-}
-
-executar_autenticacao_ssh_github() {
-  echo "${GREEN}Executando o script de autenticação SSH...${RESET}"
-  caminho_script="$PWD/github_config/index.sh"
-  . "$caminho_script"
-}
-
-# Menu iterativo 
-while true; do
-  echo "Selecione uma opção, exemplo: 2"
-  echo "1. Instalar e configurar o node.js com nvm e fish shell"
-  echo "2. Instalar e configurar o docker"
-  echo "3. Configurar Autenticação SSH com o github"
-  echo "4. Reiniciar a máquina"
-  echo "5. Fechar terminal"
-
-  read opcao
-
-  case $opcao in
-    1)
-      executar_configuracao_node_js
-      ;;
-    2) 
-      executar_configuracao_docker
-      ;;
-    3)
-      executar_autenticacao_ssh_github 
-      ;;
-    4) 
-      echo "[REINICIANDO...]"
-      sudo reboot
-      ;;
-    5) 
-      echo "Saindo..."
-      break
-      ;;
-    *)
-      echo
-      echo "${RED}Opção inválida${RESET}"
-      echo
-      ;;
-  esac
-done
+baixar_e_instalar_programas_apt
