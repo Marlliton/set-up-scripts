@@ -38,6 +38,8 @@ PROGRAMAS_APT=(
   "curl"
   "unzip"
   "flameshot"
+  "gparted"
+
 )
 
 atualizar_sistema() {
