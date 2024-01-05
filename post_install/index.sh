@@ -19,15 +19,13 @@ PROGRAMAS_DEB=(
 # Programas flatpak
 PROGRAMAS_FLATPAK=(
   "com.discordapp.Discord"
-  "rest.insomnia.Insomnia"
+  # "rest.insomnia.Insomnia"
   "io.beekeeperstudio.Studio"
   "io.github.shiftey.Desktop"
   "org.kde.kdenlive"
   "com.stremio.Stremio"
   "com.spotify.Client"
   "com.obsproject.Studio"
-  "com.microsoft.Edge"
-  "org.gnome.Boxes"
   "it.mijorus.smile"
 )
 
@@ -39,7 +37,8 @@ PROGRAMAS_APT=(
   "unzip"
   "flameshot"
   "gparted"
-
+  "keepassxc"
+  "gnome-boxes"
 )
 
 atualizar_sistema() {

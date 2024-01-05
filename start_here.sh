@@ -101,4 +101,4 @@ echo "https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md"
  
 echo
 echo "Para instalar o fnm (fast node manager): curl -fsSL https://fnm.vercel.app/install | bash"
-echo "Para instar o node em sua versão lts: fnm install --lts"
+echo "Para instlar o node em sua versão lts: fnm install --lts"
