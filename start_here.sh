@@ -28,7 +28,7 @@ executar_configuracao_docker() {
   caminho_script="$PWD/docker_config/index.sh"
   . "$caminho_script"
 }
-
+ 
 executar_autenticacao_ssh_github() {
   echo "${GREEN}Executando o script de autenticação SSH...${RESET}"
   caminho_script="$PWD/github_config/index.sh"
